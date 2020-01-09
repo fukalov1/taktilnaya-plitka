@@ -37,9 +37,7 @@
         </div>
         <div class="footer__bottom-line flex">
             <div class="footer__contacts">
-                <a href="tel:88005001829" class="phone">8 (800) 500-18-29</a>
-                <a href="mailto:taktilka163@mail.ru" class="mail">taktilka163@mail.ru</a>
-                <div class="free-call">Звонки по России - бесплатно!</div>
+                {!! $headers->text !!}
             </div>
             <div class="footer__lines">
                 <div class="footer__line">20 филиалов по России и СНГ.</div>

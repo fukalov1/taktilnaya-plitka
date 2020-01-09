@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\QuestBlock;
+use App\SubDomain;
 use Mail;
 use App\Page;
 use App\PageBlock;
@@ -33,7 +34,13 @@ class PageController extends Controller
         $location = '';
         $domain = explode('.', $_SERVER['HTTP_HOST']);
         if(count($domain)==3 and $domain[0]!='www') {
-           $location = $domain[0].'_';
+           $location = $domain[0];
+        }
+        if ($location=='') {
+            $subdomain = SubDomain::first();
+        }
+        else {
+            $subdomain = SubDomain::where('name', $location)->get()->first();
         }
 //        dd($location);
 //        dd($page);
@@ -53,14 +60,18 @@ class PageController extends Controller
         $limit_news = $limit_news - count($banners);
 
         $this->getBeadCrumbs($page->id);
+        if ($location!='') {
+            $location .= '_';
+        }
         $data['locate'] = $location;
+        $data['headers'] = $subdomain;
         $data['pages'] = $this->page->getMenu();
         $data['page_blocks'] = $this->pageBlock->where('page_id', $page->id)->orderBy('orders')->get();
 //        $data['banners'] = $banners;
         $data['bread_crumbs'] = '<a href="/">Главная</a> /'.$this->bread_crubs;
 
 //        dd($page->getMenu());
-//dd($template);
+//dd($subdomain);
         return view($template, $data);
     }
 

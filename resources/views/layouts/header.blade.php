@@ -38,7 +38,5 @@
         </ul>
 
     </nav>
-    <a href="tel:88005001829" class="phone">8 (800) 500-18-29</a>
-    <a href="mailto:taktilka163@mail.ru" class="mail">taktilka163@mail.ru</a>
-    <div class="free-call">Звонки по России - бесплатно!</div>
+    {!! $headers->text !!}
 </header>
