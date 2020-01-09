@@ -3,8 +3,10 @@
 namespace App\Admin\Extensions\Form\Field;
 
 use Encore\Admin\Form\Field\Image;
+use Illuminate\Support\Facades\Log;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
-use Imagez;
+//use Imagez;
+use Intervention\Image\Facades\Image as Imagez;
 
 class MyResizeImage extends Image
 {
@@ -44,17 +46,27 @@ class MyResizeImage extends Image
 
         $file = public_path('uploads').'/'.$filename;
         $filename = preg_replace('/images\//','', $filename);
-        $i = Imagez::make($file);
-        $w = $i->width();
-        $h = $i->height();
+        try {
+            $i = Imagez::make($file);
+            $w = $i->width();
+            $h = $i->height();
 
-        if ($w/$h > $width/$height) {
-            $i->resize(round($height*$w/$h,0), $height);
+            if ($w/$h > $width/$height) {
+                $i->resize(round($height*$w/$h,0), $height);
+            }
+            else {
+                $i->resize($width, round($width*$h/$w,0));
+            }
+            Log::warning('test write preview '.public_path('uploads').'/images/thumbnail/'.$filename);
+//        $i->crop($width,$height);
+
+            $i->save(public_path('uploads').'/images/thumbnail/'.$filename);
+            $i->crop($width,$height);
+            Log::info('Write successfully preview '.public_path('uploads').'/images/thumbnail/'.$filename);
         }
-        else {
-            $i->resize($width, round($width*$h/$w,0));
+        catch (\Exception $exception) {
+            Log::warning('Error write preview '.public_path('uploads').'/images/thumbnail/'.$filename." Error: ".$exception->getMessage() );
         }
-        $i->crop($width,$height);
 
         $i->save(public_path('uploads').'/images/thumbnail/'.$filename);
 

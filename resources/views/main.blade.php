@@ -3,9 +3,6 @@
 
 @section('content')
 
-
-
-
     @foreach($page_blocks as $page_block)
         @if($page_block->type == '1')
             <section class="page-block" id="block{{$page_block->id}}">

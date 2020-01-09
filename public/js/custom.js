@@ -1,3 +1,6 @@
+$(document).ready(function() {
+
+
     function removePhoto (id) {
         console.log('remove photo', id);
         $.ajax({
@@ -20,6 +23,6 @@
     }
 
 
-$(document).ready(function() {
+  $("a.modalbox").fancybox();
 
-    });
+});

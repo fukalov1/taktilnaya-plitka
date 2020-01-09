@@ -68,32 +68,27 @@
     </div>
     <div class="main-content">
         <div class="wrapper flex">
-            <div class="main-content__img"></div>
-            <div class="main-content__text">
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida. Risus commodo viverra maecenas accumsan lacus vel facilisis. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida. Risus commodo viverra maecenas accumsan lacus vel facilisis. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida. Risus commodo viverra maecenas accumsan lacus vel facilisis. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida. Risus commodo viverra maecenas accumsan lacus vel facilisis. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida. Risus commodo viverra maecenas accumsan lacus vel facilisis. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida. Risus commodo viverra maecenas accumsan lacus vel facilisis. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida. Risus commodo viverra maecenas accumsan lacus vel facilisis.</p>
-            </div>
-        </div>
-    </div>
-
-    @foreach($page_blocks as $page_block)
+            @foreach($page_blocks as $page_block)
         @if($page_block->type == '1')
             <section class="page-block" id="block{{$page_block->id}}">
-                <div class="container">
+                <div class="main-content__text">
                     <h1>{{ $page_block->header }}</h1>
-                    {!! $page_block->text !!}
+                    <p>
+                        {!! $page_block->text !!}
+                    </p>
                 </div>
             </section>
         @elseif($page_block->type=='2')
-            <div class="blo-photo" id="block{{$page_block->id}}">
-                <div class="container pos-r">
-                    <h3>{{ $page_block->header }}</h3>
-                    <div class="blo-photo-item">
-                        <img src="/uploads/{{ $page_block->image }}" alt="{{ $page_block->header }}">
-                    </div>
-                    <div class="blo-photo-txt">
-                        {!! $page_block->text !!}
-                    </div>
+                <div class="main-content__img">
+                    <img src="/uploads/{{ $page_block->image }}" alt="{{ $page_block->header }}">
                 </div>
+                <div class="main-content__text">
+                    @if($page_block->header)
+                        <h1>{{ $page_block->header }}</h1>
+                    @endif
+                    <p>
+                        {!! $page_block->text !!}
+                    </p>
             </div>
         @elseif($page_block->type=='3')
             <section class="promo" id="block{{$page_block->id}}">
@@ -154,13 +149,14 @@
                     <section id="photo-gallery">
                         <div class="container" id="block{{ $page_block->id }}">
                             <h2>{{ $photoset->name }}</h2>
-                            <div class="row">
+                            <div class="wrapper flex">
                                 @foreach($photoset->photos as $photo)
-                                    <div class="col-md-6 col-lg-4">
+                                    <div class="image-preview">
                                         <div class="photo-gallery-item">
-                                            <a href="/uploads/images/{{$photo->image}}" class="modalbox"><img
-                                                        src="images/search.png" alt=""></a>
-                                            <img src="/uploads/images/thumbnail/{{$photo->image}}" alt="">
+                                            <a href="/uploads/images/{{$photo->image}}" class="modalbox">
+                                                <img src="/uploads/images/thumbnail/{{$photo->image}}" alt="">
+                                            </a>
+
                                             <div class="title">
                                                 {{ $photo->name }}
                                             </div>
@@ -219,5 +215,7 @@
             @endforeach
         @endif
     @endforeach
+        </div>
+    </div>
 
 @stop

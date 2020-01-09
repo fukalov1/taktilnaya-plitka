@@ -17,8 +17,7 @@
     <link rel="shortcut icon" href="images/favicon.png" type="image/png"/>
 
     @include('layouts.styles')
-    <script src="{{ asset('/js/jquery-3.2.1.min.js') }}"></script>
-    <script src="{{ asset('/js/main.js') }}"></script>
+
 </head>
 <body>
     @include('layouts.header')
