@@ -23,6 +23,7 @@ $(document).ready(function() {
     }
 
 
-  $("a.modalbox").fancybox();
+    if ($( "a" ).hasClass( "modalbox" ))
+        $("a.modalbox").fancybox();
 
 });
