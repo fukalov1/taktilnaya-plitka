@@ -41,6 +41,8 @@ class PageController extends Controller
         }
         else {
             $subdomain = SubDomain::where('name', $location)->get()->first();
+            if(!$subdomain)
+                $subdomain = SubDomain::first();
         }
 //        dd($location);
 //        dd($page);
