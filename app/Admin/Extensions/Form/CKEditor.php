@@ -20,7 +20,7 @@ class CKEditor extends Field
     public function render()
     {
         $this->script = "var editor = $('textarea.{$this->getElementClassString()}').ckeditor();";
-        $this->script .= "CKFinder.setupCKEditor( editor, '/ckfinder/' ) ;";
+//        $this->script .= "CKFinder.setupCKEditor( editor, '/ckfinder/' ) ;";
 
 
         return parent::render();
