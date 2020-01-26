@@ -204,7 +204,9 @@ class PageBlockController extends Controller
                     'filebrowserUploadUrl' => '/ckfinder/browser?type=Files',
                     'filebrowserImageUploadUrl' => '/ckfinder/browser?command=QuickUpload&type=Images',
                     'lang' => 'ru',
-                    'height' => 500
+                    'height' => 500,
+                    'filebrowserWindowWidth' => '1000',
+ 	                'filebrowserWindowHeight' => '700'
                 ])->default('-');
 //        $form->myresizeimage('image', 'Фото');
         $form->image('image', 'Фото');
