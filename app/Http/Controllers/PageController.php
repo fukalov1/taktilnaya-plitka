@@ -44,8 +44,8 @@ class PageController extends Controller
             if(!$subdomain)
                 $subdomain = SubDomain::first();
         }
-//        dd($location);
-//        dd($page);
+//        dd($location)
+//        dd($subdomain);
         $template = 'page';
         $data = ['data' => $page];
         // Если главная страница

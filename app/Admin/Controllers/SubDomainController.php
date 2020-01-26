@@ -56,22 +56,28 @@ class SubDomainController extends AdminController
     {
         $form = new Form(new SubDomain());
 
-        $form->text('name', 'Наименование');
-        $form->text('notice', 'Описание');
+        $form->tab('Основная', function ($form) {
+            $form->text('name', 'Наименование');
+            $form->text('notice', 'Описание');
 //        $form->text('text', 'Текст');
-        $form->ckeditor('text', 'Текст')
-            ->options(
-                [
-                    'autoParagraph' => false,
-                    'filebrowserBrowseUrl' =>  '/ckfinder/browser',
-                    'filebrowserImageBrowseUrl' =>  '/ckfinder/browser',
-                    'filebrowserUploadUrl' => '/ckfinder/browser?type=Files',
-                    'filebrowserImageUploadUrl' => '/ckfinder/browser?command=QuickUpload&type=Images',
-                    'lang' => 'ru',
-                    'width' => 1000,
-                    'height' => 800,
-                ])->default('-');
+            $form->ckeditor('text', 'Текст')
+                ->options(
+                    [
+                        'autoParagraph' => false,
+                        'filebrowserBrowseUrl' => '/ckfinder/browser',
+                        'filebrowserImageBrowseUrl' => '/ckfinder/browser',
+                        'filebrowserUploadUrl' => '/ckfinder/browser?type=Files',
+                        'filebrowserImageUploadUrl' => '/ckfinder/browser?command=QuickUpload&type=Images',
+                        'lang' => 'ru',
+                        'width' => 1000,
+                        'height' => 800,
+                    ])->default('-');
 //        $form->myresizeimage('image', 'Фото');
+        })->tab('Мета', function ($form) {
+            $form->text('title', 'Заголовок страницы');
+            $form->text('description', 'Описание страницы');
+            $form->text('keywords', 'Ключевые слова');
+        });
 
         return $form;
     }
