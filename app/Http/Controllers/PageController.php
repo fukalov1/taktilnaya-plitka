@@ -46,6 +46,7 @@ class PageController extends Controller
         }
 //        dd($location)
 //        dd($subdomain);
+//        dd($page);
         $template = 'page';
         $data = ['data' => $page];
         // Если главная страница

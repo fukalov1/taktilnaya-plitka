@@ -30,7 +30,7 @@ $config['authentication'] = function () {
 // http://docs.cksource.com/ckfinder3-php/configuration.html#configuration_options_licenseKey
 
 //$config['licenseName'] = $_SERVER['HTTP_HOST'];
-//$config['licenseKey']='Z8H8TFLY2JLLM3Q6YUXF6F6ITU4GS';
+$config['licenseKey']='*K?M-*1**-9**P-*A**-*T**-F*N*-5**P';
 //$config['licenseKey']='MAPA3J2AWAU2XXRKIQ546AMUGAOB2';
 //$config['licenseKey']='KPHPGD21Q6D7DRRNXM4F6BDUQW2GC';
 //$config['licenseKey']='R5C528TKDFAPGEMOCKH86LENXNTJK';
