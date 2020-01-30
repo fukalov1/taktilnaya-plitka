@@ -7,9 +7,9 @@
 <!--<![endif]-->
 <head>
     <meta charset="utf-8" />
-    <title>{{ $headers->title }}</title>
-    <meta name="description" content="{{ $headers->description  }}" />
-    <meta name="keywords" content="{{ $headers->keywords }}"/>
+    <title>{{ $headers->title }} в г. {{ $headers->notice }}</title>
+    <meta name="description" content="{{ $headers->description  }} в г. {{ $headers->notice }}" />
+    <meta name="keywords" content="{{ $headers->keywords }} {{ $headers->notice }}"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta name="format-detection" content="telephone=no">

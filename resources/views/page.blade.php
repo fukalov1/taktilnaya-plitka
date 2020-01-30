@@ -46,9 +46,9 @@
                             <ul class="sub-menu">
                                 @foreach($page->sub_pages as $sub_page)
                                     @if($sub_page->redirect=='')
-                                        <a href='/{{ $sub_page->url }}'>{!! $sub_page->name  !!} </a>
+                                        <li><a href='/{{ $sub_page->url }}'>{!! $sub_page->name  !!} </a></li>
                                     @else
-                                        <a href='/{{ $sub_page->redirect }}'>{!! $sub_page->name  !!} </a>
+                                        <li><a href='/{{ $sub_page->redirect }}'>{!! $sub_page->name  !!} </a></li>
                                     @endif
                                 @endforeach
                             </ul>
@@ -72,7 +72,7 @@
         @if($page_block->type == '1')
             <section class="page-block" id="block{{$page_block->id}}">
                 <div class="main-content__text">
-                    <h1>{{ $page_block->header }}</h1>
+                    <h1>{{ $page_block->header }}  в г. {{ $headers->notice }}</h1>
                     <p>
                         {!! $page_block->text !!}
                     </p>

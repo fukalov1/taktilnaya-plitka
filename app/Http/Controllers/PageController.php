@@ -44,6 +44,7 @@ class PageController extends Controller
             if(!$subdomain)
                 $subdomain = SubDomain::first();
         }
+
 //        dd($location)
 //        dd($subdomain);
 //        dd($page);
@@ -57,10 +58,9 @@ class PageController extends Controller
             ];
         }
         //  баннера для зоны новостей
-        $banners = $this->sliderItem->where('slider_id',4)->get();
-//        dd($banners);
-        $limit_news = 4;
-        $limit_news = $limit_news - count($banners);
+//        $banners = $this->sliderItem->where('slider_id',4)->get();
+//        $limit_news = 4;
+//        $limit_news = $limit_news - count($banners);
 
         $this->getBeadCrumbs($page->id);
         if ($location!='') {
@@ -69,13 +69,24 @@ class PageController extends Controller
         $data['locate'] = $location;
         $data['headers'] = $subdomain;
         $data['pages'] = $this->page->getMenu();
-        $data['page_blocks'] = $this->pageBlock->where('page_id', $page->id)->orderBy('orders')->get();
+        $page_blocks = $this->pageBlock->where('page_id', $page->id)->orderBy('orders')->get();
+        $page_blocks = $this->preparePageBlocks($page_blocks, $subdomain);
+        $data['page_blocks'] = $page_blocks;
 //        $data['banners'] = $banners;
         $data['bread_crumbs'] = '<a href="/">Главная</a> /'.$this->bread_crubs;
 
 //        dd($page->getMenu());
 //dd($subdomain);
         return view($template, $data);
+    }
+
+    private function preparePageBlocks($page_blocks, $subdomain)
+    {
+        foreach ($page_blocks as $item) {
+            $item->text = preg_replace("/\#city/", $subdomain->notice, $item->text);
+        }
+
+        return $page_blocks;
     }
 
     private function getBeadCrumbs($id)
