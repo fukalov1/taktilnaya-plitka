@@ -30,3 +30,11 @@
     width: 300px;
     margin: 10px;
 }
+
+a {
+    color: #c33700;
+    text-decoration: underline;
+}
+a:hover {
+    color: #9f041b;
+}
