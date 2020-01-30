@@ -38,3 +38,14 @@
 .page-block a:hover {
     color: #9f041b;
 }
+li.menu-item-has-children span {
+    display: inline-block;
+    font-size: 20px;
+    font-weight: 500;
+    text-decoration: none;
+    padding: 0 6px;
+    line-height: 40px;
+    transition: all .5s;
+    position: relative;
+    cursor: pointer;
+}

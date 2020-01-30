@@ -39,7 +39,13 @@
                     @if($page->relation)
                         <li class="menu-item-has-children">
                             @if($page->redirect=='')
-                                <a href='/{{ $page->url }}'>{!! $page->name  !!} </a>
+                                @if($page->relation)
+                                    <span>
+                                        {!! $page->name  !!}
+                                    </span>
+                                @else
+                                    <a href='/{{ $page->url }}'>{!! $page->name  !!} </a>
+                                @endif
                             @else
                                 <a href='/{{ $page->redirect }}'>{!! $page->name  !!} </a>
                             @endif
