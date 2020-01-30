@@ -31,10 +31,10 @@
     margin: 10px;
 }
 
-a {
+.page-block a {
     color: #c33700;
     text-decoration: underline;
 }
-a:hover {
+.page-block a:hover {
     color: #9f041b;
 }
