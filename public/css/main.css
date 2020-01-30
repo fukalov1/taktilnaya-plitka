@@ -49,3 +49,32 @@ li.menu-item-has-children span {
     position: relative;
     cursor: pointer;
 }
+.mail-form {
+    width: 100%;
+}
+.row {
+    display: flex;
+    width: 100%;
+}
+.col4 {
+    width: 30%;
+}
+.form-control, textarea {
+    width: 99%;
+    padding: 10px 0;
+    border: 1px #989898 solid;
+    color: #000000;
+    margin: 10px 1px;
+    font-size: 16px;
+    font-weight: 500;
+}
+.form-textarea {
+    width: 90%;
+    margin: 1px;
+}
+.submit-button {
+    padding: 10px;
+    background-color: #c33700;
+    color: #ffffff;
+    border: 1px solid #c31800;
+}

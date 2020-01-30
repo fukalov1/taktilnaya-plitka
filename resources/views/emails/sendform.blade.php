@@ -19,10 +19,6 @@
 </head>
 <body>
 
-@if(key_exists('direction', $data))
-    Направление деятельности: {{ $data['direction'] }} <br/>
-@endif
-
 @if(key_exists('fio', $data))
     @if(isset($data['fio']))
         ФИО: {{ $data['fio'] }}<br/>

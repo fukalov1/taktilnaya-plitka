@@ -103,7 +103,6 @@ class PageController extends Controller
     {
         if ($id) {
 
-
             try {
                 $mailform = MailForm::find($id);
                 $direction = request('direction');
@@ -118,18 +117,19 @@ class PageController extends Controller
                     'message' => request('message' . $id),
                     'to' => $mailform->sender
                 ];
+                Log::channel('sitelog')->info('Send mail from ' . config('email') . '  name: ' . request('fio') . '  email: ' . request('email'));
 
-                Log::channel('sitelog')->info('Send mail from ' . request('email') . ' name: ' . request('fio') . ' ' . request('direction'));
-
-                Mail::send('emails.sendform', ['data' => $data], function ($m) use ($data, $direction) {
+                Mail::send('emails.sendform', ['data' => $data], function ($m) use ($data) {
                     $m->from(config('email'), ' ', config('company_name'));
 
-                    $m->to($data['to'], 'admin')->subject('Обратная связь. ' . $direction);
+                    $m->to($data['to'], 'admin')->subject('Заказ сметы с taktilnaya-plitka.ru. ');
                 });
-                $data = ['result' => 'Спасибо за Ваше обращение. <br/><br/>Сообщение успешно отправлено администратору.<br/><br/> В ближайшее время Вы получите ответ.'];
+                $data = ['success' => true, 'result' => 'Спасибо за Ваше обращение. <br/><br/>Сообщение успешно отправлено администратору.<br/><br/> В ближайшее время Вы получите ответ.'];
             }
             catch (\Exception $error) {
-                Log::channel('customlog')->info('Error send mail from ' . request('email') . ' name: ' . request('fio') . ' ' . request('direction'));
+//                dd($error->message);
+                $data = ['success' => false, 'result' => 'Ошибка. <br/><br/>Сообщение не было отправлено администратору.<br/>'];
+                Log::channel('sitelog')->info('Error send mail from ' . request('email') . ' name: ' . request('fio') . ' ' . request('direction').' Error: '.$error->getMessage());
             }
         }
         else {

@@ -186,24 +186,15 @@
                             {!! $page_block->text  !!}
                             <form id="sendform{{ $item->id }}" class="send-form" method="post">
                                 {{ csrf_field() }}
-                                <div class="form-inp">
+                                <div class="row">
                                     @foreach($item->fields as $field)
-                                        @if($field->field_name=='direction')
-                                            <div class="label">
-                                                Укажите тему вопроса, по которой отправляте письмо
-                                            </div>
-                                            <select class="field" id="{{ $field->field_name }}{{ $item->id }}"
-                                                    name="{{ $field->field_name }}">
-                                                @foreach($directs as $direct)
-                                                    <option value="{{ $direct->name }}">{{ $direct->name }}</option>
-                                                @endforeach
-                                            </select>
-
-                                        @else
-                                            <input type="text" class="field" rel="{{ $field->field_name }}"
+                                        <div class="col4">
+                                        <input type="text" class="form-control {{ $field->field_name }}" rel="{{ $field->field_name }}"
                                                id="{{ $field->field_name }}{{ $item->id }}"
-                                               name="{{ $field->field_name }}" placeholder="{{ $field->field_value }}">
-                                        @endif
+                                               name="{{ $field->field_name }}"
+                                               required
+                                               placeholder="{{ $field->field_value }}">
+                                        </div>
                                     @endforeach
                                 </div>
                                 <div class="form-textarea">
