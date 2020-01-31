@@ -119,19 +119,22 @@ class PageController extends Controller
                     'message' => request('message' . $id),
                     'to' => $mailform->sender
                 ];
+
+
                 Log::channel('sitelog')->info('Send mail from ' . config('email') . '  name: ' . request('fio') . '  email: ' . request('email'));
 
-                Mail::send('emails.sendform', ['data' => $data], function ($m) use ($data) {
-                    $m->from(config('email'), ' ', config('company_name'));
-
-                    $m->to($data['to'], 'admin')->subject('Заказ сметы с taktilnaya-plitka.ru. ');
+                Mail::send('emails.sendform', ['data' => $data], function ($message) use ($data) {
+                    $emails = explode(',',$data['to']);
+                    $message->from(config('email'), ' ', config('company_name'));
+                    $message->to($emails)->subject('Заказ сметы с taktilnaya-plitka.ru. ');
+//                    $message->to($data['to'], 'admin')->subject('Заказ сметы с taktilnaya-plitka.ru. ');
                 });
                 $data = ['success' => true, 'result' => 'Спасибо за Ваше обращение. <br/><br/>Сообщение успешно отправлено администратору.<br/><br/> В ближайшее время Вы получите ответ.'];
             }
             catch (\Exception $error) {
 //                dd($error->message);
                 $data = ['success' => false, 'result' => 'Ошибка. <br/><br/>Сообщение не было отправлено администратору.<br/>'];
-                Log::channel('sitelog')->info('Error send mail to ' . request('email') . ' name: ' . request('fio') . ' ' . request('direction').' Error: '.$error->getMessage());
+                Log::channel('sitelog')->info('Error! Sender: '.config('email').'  Receiver: '.$data['to'].' User:' . request('email') . ' name: ' . request('fio') . ' ' . request('direction').' Error: '.$error->getMessage());
             }
         }
         else {
