@@ -19,8 +19,8 @@
 </head>
 <body>
 
-URL: {{ $data['url'] }}
-IP: {{ $data['ip'] }}
+URL: {{ $data['url'] }}<br/>
+IP: {{ $data['ip'] }}<br/>
 
 @if(key_exists('fio', $data))
     @if(isset($data['fio']))
@@ -38,8 +38,6 @@ E-mail: {{ $data['email'] }}<br/>
         Телефон: {{ $data['phone'] }}<br/>
         @endif
 @endif
-<br/><br/>
-
 Текст сообщения: {{ $data['message'] }}
 
 
