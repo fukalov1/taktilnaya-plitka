@@ -19,6 +19,9 @@
 </head>
 <body>
 
+URL: {{ $data['url'] }}
+IP: {{ $data['ip'] }}
+
 @if(key_exists('fio', $data))
     @if(isset($data['fio']))
         ФИО: {{ $data['fio'] }}<br/>

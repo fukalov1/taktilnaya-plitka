@@ -108,6 +108,8 @@ class PageController extends Controller
                 $direction = request('direction');
 
                 $data = [
+                    'ip' => $this->getIp(),
+                    'url' =>  url()->current(),
                     'email' => request('email'),
                     'name' => request('name'),
                     'fio' => request('fio'),
@@ -129,13 +131,26 @@ class PageController extends Controller
             catch (\Exception $error) {
 //                dd($error->message);
                 $data = ['success' => false, 'result' => 'Ошибка. <br/><br/>Сообщение не было отправлено администратору.<br/>'];
-                Log::channel('sitelog')->info('Error send mail from ' . request('email') . ' name: ' . request('fio') . ' ' . request('direction').' Error: '.$error->getMessage());
+                Log::channel('sitelog')->info('Error send mail to ' . request('email') . ' name: ' . request('fio') . ' ' . request('direction').' Error: '.$error->getMessage());
             }
         }
         else {
             $data = ['result' => 'Данные не приняты'];
         }
         return json_encode($data);
+    }
+
+    private function getIp(){
+        foreach (array('HTTP_CLIENT_IP', 'HTTP_X_FORWARDED_FOR', 'HTTP_X_FORWARDED', 'HTTP_X_CLUSTER_CLIENT_IP', 'HTTP_FORWARDED_FOR', 'HTTP_FORWARDED', 'REMOTE_ADDR') as $key){
+            if (array_key_exists($key, $_SERVER) === true){
+                foreach (explode(',', $_SERVER[$key]) as $ip){
+                    $ip = trim($ip); // just to be safe
+                    if (filter_var($ip, FILTER_VALIDATE_IP, FILTER_FLAG_NO_PRIV_RANGE | FILTER_FLAG_NO_RES_RANGE) !== false){
+                        return $ip;
+                    }
+                }
+            }
+        }
     }
 
     public function sendQuestData($id)
