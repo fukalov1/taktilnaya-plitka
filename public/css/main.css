@@ -78,3 +78,8 @@ li.menu-item-has-children span {
     color: #ffffff;
     border: 1px solid #c31800;
 }
+.error-message {
+    display: none;
+    background: #fbccd3;
+    padding: 10px;
+}

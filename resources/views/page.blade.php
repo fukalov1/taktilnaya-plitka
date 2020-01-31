@@ -184,12 +184,13 @@
                         <div class="container form-area{{ $item->id }}">
                             <h2>{{ $item->name }}</h2>
                             {!! $page_block->text  !!}
+                            <div class="error-message"></div>
                             <form id="sendform{{ $item->id }}" class="send-form" method="post">
                                 {{ csrf_field() }}
                                 <div class="row">
                                     @foreach($item->fields as $field)
                                         <div class="col4">
-                                        <input type="text" class="form-control {{ $field->field_name }}" rel="{{ $field->field_name }}"
+                                        <input type="text" class="form-control {{ $field->field_name }} field" rel="{{ $field->field_name }}"
                                                id="{{ $field->field_name }}{{ $item->id }}"
                                                name="{{ $field->field_name }}"
                                                required

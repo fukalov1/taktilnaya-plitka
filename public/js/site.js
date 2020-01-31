@@ -9,19 +9,22 @@ $(document).ready(function ($) {
         let id = $(this).attr('rel');
         let empty_field = '';
         $('.field').each(function () {
+
             if ($(this).val()==='' || $(this).val()===' ') {
-                empty_field = $(this).attr('rel');
+                empty_field = $(this).attr('placeholder');
                 send  = false;
                 return false;
             }
         });
-        if (($('#message'+id).val()==='' || $('#message'+id).val()===' ') && send===true) {
-            empty_field = 'message';
-            send = false;
-        }
+        // if (($('#message'+id).val()==='' || $('#message'+id).val()===' ') && send===true) {
+        //     empty_field = 'Сообщение';
+        //     send = false;
+        // }
 
 
         if (send) {
+            $('.error-message').hide();
+
             $.ajax({
                 url: "/send_form/" + id,
                 dataType: "json",
@@ -31,7 +34,9 @@ $(document).ready(function ($) {
                 type: "Post",
                 data: $('#sendform'+id).serialize(),
                 success: function (data) {
-                    document.location = '/thank';
+                    if(data.success) {
+                        document.location = '/thank';
+                    }
                     $('.form-area' + id).html('<h2>'+data.result+'</h2>');
                 },
                 error: function (data) {
@@ -42,6 +47,8 @@ $(document).ready(function ($) {
             });
         }
         else {
+            $('.error-message').show();
+            $('.error-message').text('Заполните поле '+empty_field);
             console.log('Заполните поле ', empty_field, id);
             $('#'+empty_field+id).toggleClass('empty-field');
         }
