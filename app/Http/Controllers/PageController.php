@@ -72,7 +72,7 @@ class PageController extends Controller
         }
         else {
             $headers = $page;
-            $headers->put('notice', $subdomain->notice);
+            $headers->notice = $subdomain->notice;
             $data['headers'] = $headers;
         }
         $data['pages'] = $this->page->getMenu();
