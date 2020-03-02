@@ -67,7 +67,12 @@ class PageController extends Controller
             $location .= '_';
         }
         $data['locate'] = $location;
-        $data['headers'] = $subdomain;
+        if ($page->id == 1) {
+            $data['headers'] = $subdomain;
+        }
+        else {
+            $data['headers'] = $page;
+        }
         $data['pages'] = $this->page->getMenu();
         $page_blocks = $this->pageBlock->where('page_id', $page->id)->orderBy('orders')->get();
         $page_blocks = $this->preparePageBlocks($page_blocks, $subdomain);
