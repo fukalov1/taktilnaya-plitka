@@ -5,7 +5,7 @@
             <span></span>
         </div>
     </div>
-    <nav class="navbar">
+    <nav class="navbar">!!
         <ul class="menu">
             @foreach($pages as $page)
                 @if($page->relation)

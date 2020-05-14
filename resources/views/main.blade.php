@@ -2,7 +2,6 @@
 
 
 @section('content')
-
     @foreach($page_blocks as $page_block)
         @if($page_block->type == '1')
             <section class="page-block" id="block{{$page_block->id}}">
@@ -74,18 +73,4 @@
             @endforeach
         @endif
     @endforeach
-
-    {{--статичный горизонтальный баннер--}}
-{{--<section id="horizontally">--}}
-    {{--<div class="container pos-r">--}}
-        {{--<div class="horizontally-txt">--}}
-            {{--<h3>Блок с одним горизонтальным баннером во всю ширину </h3>--}}
-            {{--<p>Сайт рыбатекст поможет дизайнеру, верстальщику, вебмастеру сгенерировать несколько абзацев более менее осмысленного текста рыбы на русском языке, а начинающему оратору отточить навык публичных выступлений в домашних условиях.</p>--}}
-            {{--<div class="horizontally-girl">--}}
-                {{--<img src="images/girl.png" alt="">--}}
-            {{--</div>--}}
-        {{--</div>--}}
-    {{--</div>--}}
-{{--</section>--}}
-
 @stop
