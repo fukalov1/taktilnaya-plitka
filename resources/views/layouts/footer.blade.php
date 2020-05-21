@@ -11,10 +11,10 @@
                         @foreach($pages as $page)
                             @if($page->relation)
                                 <li class="nav-item dropdown">
-                                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLinkFooter" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink{{ $sub_page->id }}" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                         {!! $page->name  !!}
                                     </a>
-                                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLinkFooter">
+                                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink{{ $sub_page->id }}">
                                         @foreach($page->sub_pages as $sub_page)
                                             @if($sub_page->redirect=='')
                                                 <a class="dropdown-item" href='/{{ $sub_page->url }}'>{!! $sub_page->name  !!} </a>
