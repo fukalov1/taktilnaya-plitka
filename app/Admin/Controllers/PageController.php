@@ -172,7 +172,16 @@ class PageController extends Controller
 
         $form->saving(function (Form $form) {
             $form->url = $this->translit($form->name);
+
+            if($form->title=='') {
+                $form->title = $form->name;
+            }
+            if($form->description=='') {
+                $form->description = $form->name;
+            }
+
         });
+
 
         return $form;
     }

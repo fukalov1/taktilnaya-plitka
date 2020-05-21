@@ -11,7 +11,7 @@
             <h1 class="main-screen__caption">Производим тактильную&nbsp;плитку с отгрузкой по&nbsp;России и&nbsp;СНГ</h1>
             <div class="swiper-container">
                 <div class="swiper-wrapper">
-                    <div class="swiper-slide">
+                    <div class="swiper-slide" data-swiper-autoplay="500">
                         <h2 class="swiper-caption">Бетонная тактильная плитка</h2>
                         <div class="swiper-img swiper-img_concrete"></div>
                     </div>

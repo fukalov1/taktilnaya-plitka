@@ -15,15 +15,15 @@
                         @else
                             <a href='/{{ $page->redirect }}'>{!! $page->name  !!} </a>
                         @endif
-                        <ul class="sub-menu">
-                            @foreach($page->sub_pages as $sub_page)
-                                @if($sub_page->redirect=='')
-                                    <a href='/{{ $sub_page->url }}'>{!! $sub_page->name  !!} </a>
-                                @else
-                                    <a href='/{{ $sub_page->redirect }}'>{!! $sub_page->name  !!} </a>
-                                @endif
-                            @endforeach
-                        </ul>
+{{--                        <ul class="sub-menu">--}}
+{{--                            @foreach($page->sub_pages as $sub_page)--}}
+{{--                                @if($sub_page->redirect=='')--}}
+{{--                                    <a href='/{{ $sub_page->url }}'>{!! $sub_page->name  !!} </a>--}}
+{{--                                @else--}}
+{{--                                    <a href='/{{ $sub_page->redirect }}'>{!! $sub_page->name  !!} </a>--}}
+{{--                                @endif--}}
+{{--                            @endforeach--}}
+{{--                        </ul>--}}
                     </li>
                 @else
                     <li>
