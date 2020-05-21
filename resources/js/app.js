@@ -1,7 +1,10 @@
-require('./bootstrap');
+
 
 var $ = require("jquery");
 window.jQuery = $;
+
+require('bootstrap');
+
 // var slick = require("slick-carousel");
 require("@fancyapps/fancybox");
 

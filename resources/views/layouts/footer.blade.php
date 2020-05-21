@@ -2,37 +2,36 @@
     <div class="wrapper">
         <div class="footer__top-line flex">
             <a href="/" class="logo"></a>
-            <nav class="navbar">
-                <ul class="menu">
-                    @foreach($pages as $page)
-                        @if($page->relation)
-                        <li class="menu-item-has-children">
-                            @if($page->redirect=='')
-                                <a href='/{{ $page->url }}'>{!! $page->name  !!} </a>
+            <nav class="navbar navbar-expand-lg navbar-dark bg-warning">
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                    <ul class="navbar-nav">
+                        @foreach($pages as $page)
+                            @if($page->relation)
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        {!! $page->name  !!}
+                                    </a>
+                                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                        @foreach($page->sub_pages as $sub_page)
+                                            @if($sub_page->redirect=='')
+                                                <a class="dropdown-item" href='/{{ $sub_page->url }}'>{!! $sub_page->name  !!} </a>
+                                            @else
+                                                <a class="dropdown-item" href='/{{ $sub_page->redirect }}'>{!! $sub_page->name  !!} </a>
+                                            @endif
+                                        @endforeach
+                                    </div>
+                                </li>
                             @else
-                                <a href='/{{ $page->redirect }}'>{!! $page->name  !!} </a>
+                                <li class="nav-item">
+                                    <a class="nav-link" href='/{{ $page->url }}'>{!! $page->name  !!} </a>
+                                </li>
                             @endif
-{{--                            <ul class="sub-menu">--}}
-{{--                                @foreach($page->sub_pages as $sub_page)--}}
-{{--                                    @if($sub_page->redirect=='')--}}
-{{--                                        <a href='/{{ $sub_page->url }}'>{!! $sub_page->name  !!} </a>--}}
-{{--                                    @else--}}
-{{--                                        <a href='/{{ $sub_page->redirect }}'>{!! $sub_page->name  !!} </a>--}}
-{{--                                    @endif--}}
-{{--                                @endforeach--}}
-{{--                            </ul>--}}
-                        </li>
-                        @else
-                            <li>
-                                @if($page->redirect=='')
-                                    <a href='/{{ $page->url }}'>{!! $page->name  !!} </a>
-                                @else
-                                    <a href='/{{ $page->redirect }}'>{!! $page->name  !!} </a>
-                                @endif
-                            </li>
-                        @endif
-                    @endforeach
-                </ul>
+                        @endforeach
+                    </ul>
+                </div>
             </nav>
         </div>
         <div class="footer__bottom-line flex">
