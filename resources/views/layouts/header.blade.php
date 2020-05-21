@@ -5,9 +5,10 @@
             <span></span>
         </div>
     </div>
-    <nav class="navbar">!!
+    <nav class="navbar">
         <ul class="menu">
-            @foreach($pages as $page)
+            @if($pages ?? '')
+            @foreach($pages ?? '' as $page)
                 @if($page->relation)
                     <li class="menu-item-has-children">
                         @if($page->redirect=='')
@@ -35,8 +36,9 @@
                     </li>
                 @endif
             @endforeach
+            @endif
         </ul>
 
     </nav>
-    {!! $headers->text !!}
+
 </header>
