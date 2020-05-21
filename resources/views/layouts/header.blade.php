@@ -40,5 +40,5 @@
         </ul>
 
     </nav>
-
+    {!! $errors->text !!}
 </header>
