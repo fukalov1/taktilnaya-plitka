@@ -8,7 +8,7 @@
     <div class="main-screen">
         <div class="background-mobile"></div>
         <div class="wrapper flex">
-            <h1 class="main-screen__caption">Производим тактильную&nbsp;плитку с отгрузкой по&nbsp;России и&nbsp;СНГ</h1>
+            <span class="main-screen__caption">Производим тактильную&nbsp;плитку с отгрузкой по&nbsp;России и&nbsp;СНГ</span>
             <div class="swiper-container">
                 <div class="swiper-wrapper">
                     <div class="swiper-slide" data-swiper-autoplay="500">
