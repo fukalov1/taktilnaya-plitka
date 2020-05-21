@@ -14,4 +14,4 @@
     gtag('config', 'UA-159434975-1');
 </script>
 
-<script src="//cdn.callibri.ru/callibri.js" type="text/javascript" charset="utf-8"></script>
+<script src="//cdn.callibri.ru/callibri.js" type="text/javascript"></script>
