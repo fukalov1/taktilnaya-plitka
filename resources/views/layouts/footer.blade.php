@@ -12,15 +12,15 @@
                             @else
                                 <a href='/{{ $page->redirect }}'>{!! $page->name  !!} </a>
                             @endif
-                            <ul class="sub-menu">
-                                @foreach($page->sub_pages as $sub_page)
-                                    @if($sub_page->redirect=='')
-                                        <a href='/{{ $sub_page->url }}'>{!! $sub_page->name  !!} </a>
-                                    @else
-                                        <a href='/{{ $sub_page->redirect }}'>{!! $sub_page->name  !!} </a>
-                                    @endif
-                                @endforeach
-                            </ul>
+{{--                            <ul class="sub-menu">--}}
+{{--                                @foreach($page->sub_pages as $sub_page)--}}
+{{--                                    @if($sub_page->redirect=='')--}}
+{{--                                        <a href='/{{ $sub_page->url }}'>{!! $sub_page->name  !!} </a>--}}
+{{--                                    @else--}}
+{{--                                        <a href='/{{ $sub_page->redirect }}'>{!! $sub_page->name  !!} </a>--}}
+{{--                                    @endif--}}
+{{--                                @endforeach--}}
+{{--                            </ul>--}}
                         </li>
                         @else
                             <li>
@@ -50,7 +50,7 @@
 <div id="order" style="display: none;">
     <div class="popup-caption">Оставьте ваше имя и телефон</div>
     <div class="popup-caption-small">Наш менеджер Александр перезвонит Вамв течении 15 минут и ответит на все интересующие вопросы</div>
-    <div role="form" class="wpcf7" id="" lang="ru-RU" dir="ltr">
+    <div role="form" class="wpcf7" lang="ru-RU" dir="ltr">
         <div class="screen-reader-response"></div>
         <form action="/form.php" method="post" class="wpcf7-form form">
             <div class="form__row flex">
