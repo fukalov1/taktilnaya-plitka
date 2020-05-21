@@ -40,5 +40,7 @@
         </ul>
 
     </nav>
-    {!! $errors->text !!}
+    @if ($headers ?? '')
+        {!! $headers->text  !!}
+    @endif
 </header>
