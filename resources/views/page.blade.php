@@ -79,9 +79,9 @@
             <section class="page-block" id="block{{$page_block->id}}">
                 <div class="main-content__text">
                     <h1>{{ $page_block->header }}  в г. {{ $headers->notice }}</h1>
-                    <p>
+
                         {!! $page_block->text !!}
-                    </p>
+
                 </div>
             </section>
         @elseif($page_block->type=='2')
