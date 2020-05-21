@@ -72,13 +72,13 @@ $config['images'] = array(
 // Plase do not change these, unless you really want it.
 $config['backends']['laravel_cache'] = array(
     'name'         => 'laravel_cache',
-    'adapter'      => 'local',
+    'adapter'	   => 'local',
     'root'         => storage_path('framework/cache')
 );
 
 $config['backends']['laravel_logs'] = array(
     'name'         => 'laravel_logs',
-    'adapter'      => 'local',
+    'adapter'	   => 'local',
     'root'         => storage_path('logs')
 );
 
@@ -86,8 +86,8 @@ $config['backends']['laravel_logs'] = array(
 
 $config['backends']['default'] = array(
     'name'         => 'default',
-    'adapter'      => 'local',
-    'baseUrl'      => env('APP_URL').'/userfiles/',
+    'adapter'	   => 'local',
+    'baseUrl'	   => env('APP_URL').'/userfiles/',
     'root'         => public_path('/userfiles/'),
     'chmodFiles'   => 0777,
     'chmodFolders' => 0755,
@@ -103,7 +103,7 @@ $config['resourceTypes'][] = array(
     'name'              => 'Files', // Single quotes not allowed.
     'directory'         => 'files',
     'maxSize'           => 0,
-    'allowedExtensions' => '7z,aiff,asf,avi,bmp,csv,doc,docx,fla,flv,gif,gz,gzip,jpeg,jpg,mid,mov,mp3,mp4,mpc,mpeg,mpg,ods,odt,pdf,png,ppt,pptx,pxd,qt,ram,rar,rm,rmi,rmvb,rtf,sdc,sitd,swf,sxc,sxw,tar,tgz,tif,tiff,txt,vsd,wav,wma,wmv,xls,xlsx,zip',
+    'allowedExtensions' => '7z,aiff,asf,avi,bmp,csv,doc,docx,fla,flv,gif,gz,gzip,jpeg,jpg,mid,mov,mp3,mp4,mpc,mpeg,mpg,ods,odt,pdf,png,ppt,pptx,pxd,qt,ram,rar,rm,rmi,rmvmi,rmvb,rtf,sdc,sitd,swf,sxc,sxw,tar,tgz,tif,tiff,txt,vsd,wav,wma,wmv,xml,xls,xlsx,zip',
     'deniedExtensions'  => '',
     'backend'           => 'default'
 );
@@ -129,9 +129,9 @@ $config['accessControl'][] = array(
     'folder'              => '/',
 
     'FOLDER_VIEW'         => true,
-    'FOLDER_CREATE'       => true,
-    'FOLDER_RENAME'       => true,
-    'FOLDER_DELETE'       => true,
+    'FOLDER_CREATE'	  => true,
+    'FOLDER_RENAME'	  => true,
+    'FOLDER_DELETE'	  => true,
 
     'FILE_VIEW'           => true,
     'FILE_UPLOAD'         => true,
@@ -155,6 +155,7 @@ $config['htmlExtensions'] = array('html', 'htm', 'xml', 'js');
 $config['hideFolders'] = array('.*', 'CVS', '__thumbs');
 $config['hideFiles'] = array('.*');
 $config['forceAscii'] = false;
+$config['xSendfile'] = false;
 $config['xSendfile'] = false;
 
 // http://docs.cksource.com/ckfinder3-php/configuration.html#configuration_options_debug
