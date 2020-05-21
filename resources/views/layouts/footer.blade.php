@@ -6,15 +6,15 @@
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-                <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                <div class="collapse navbar-collapse" id="navbarNavDropdownFooter">
                     <ul class="navbar-nav">
                         @foreach($pages as $page)
                             @if($page->relation)
                                 <li class="nav-item dropdown">
-                                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLinkFooter" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                         {!! $page->name  !!}
                                     </a>
-                                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLinkFooter">
                                         @foreach($page->sub_pages as $sub_page)
                                             @if($sub_page->redirect=='')
                                                 <a class="dropdown-item" href='/{{ $sub_page->url }}'>{!! $sub_page->name  !!} </a>
