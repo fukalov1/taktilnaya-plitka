@@ -26,7 +26,7 @@
         "jquery": "^3.5.1",
         "maskedinput": "^3.3.11",
         "popper.js": "^1.16.1",
-        "swiper": "^5.4.1",
+        "swiper": "^6.5.1",
         "vue-inputmask": "^0.2.1"
     }
 }
